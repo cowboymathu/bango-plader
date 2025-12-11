@@ -33,7 +33,22 @@ const SettingsPanel = ({ settings, onSettingsChange, onGenerate, onExportPDF, on
           min="1"
           max="100"
           value={settings.totalCards}
-          onChange={(e) => handleInputChange('totalCards', parseInt(e.target.value) || 1)}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              handleInputChange('totalCards', '');
+            } else {
+              const num = parseInt(value);
+              if (!isNaN(num) && num >= 1 && num <= 100) {
+                handleInputChange('totalCards', num);
+              }
+            }
+          }}
+          onBlur={(e) => {
+            if (e.target.value === '') {
+              handleInputChange('totalCards', 1);
+            }
+          }}
           className="w-full p-2 border border-gray-300 rounded-md"
         />
       </div>

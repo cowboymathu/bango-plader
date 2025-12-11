@@ -22,7 +22,12 @@ function App() {
   };
 
   const handleGenerate = () => {
-    const newCards = generateBatch(settings.totalCards);
+    const totalCards = settings.totalCards === '' ? 0 : settings.totalCards;
+    if (totalCards < 1) {
+      alert('Please enter a valid number of cards (1-100)');
+      return;
+    }
+    const newCards = generateBatch(totalCards);
     const newSerials = generateBatchSerials(newCards);
     setCards(newCards);
     setSerialNumbers(newSerials);
