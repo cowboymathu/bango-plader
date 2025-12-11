@@ -8,7 +8,7 @@ import { exportToPDF } from './utils/pdfGenerator';
 
 function App() {
   const [settings, setSettings] = useState({
-    cardsPerSheet: 2,
+    cardsPerSheet: 3,
     totalCards: 6,
     header: ''
   });
